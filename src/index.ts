@@ -1,5 +1,5 @@
-import { CloudRun } from './cloud-run';
 import core from "@actions/core";
+import { CloudRun } from './cloud-run';
 
 async function run(): Promise<void> {
     try {

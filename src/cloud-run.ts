@@ -68,7 +68,7 @@ export class CloudRun {
             try {
                 this.authClient = (await this.auth.getClient() as AuthClientType);
             } catch (error) {
-                core.error(`Unable to retrieve authenticated client: ${error}`);
+                throw new Error(`Unable to retrieve authenticated client: ${error}`);
             }
         }
 
@@ -80,7 +80,13 @@ export class CloudRun {
     }
 
     async getService(serviceName: string): Promise<run_v1.Schema$Service> {
-        const authClient = await this.getAuthClient();
+        let authClient
+        try {
+            authClient = await this.getAuthClient();
+        } catch (error) {
+            throw error
+        }
+
         const getRequest: run_v1.Params$Resource$Namespaces$Services$Get = {
             name: this.getResource(serviceName),
             auth: authClient
