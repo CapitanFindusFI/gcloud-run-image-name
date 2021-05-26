@@ -11,6 +11,8 @@ async function run(): Promise<void> {
             throw new Error('Missing "name" input');
         }
 
+        console.log({ projectId, serviceName, serviceRegion });
+
         const cloudRunService = new CloudRun(serviceRegion, {
             projectId
         });
