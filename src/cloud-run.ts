@@ -100,8 +100,12 @@ export class CloudRun {
 
     async getServiceImage(serviceName: string): Promise<string | null | undefined> {
         const service = await this.getService(serviceName);
-        console.log(service);
+        if (!service.metadata) return null
 
-        return service.metadata?.name
+        const { metadata } = service;
+        if (!metadata.annotations) return null;
+
+        const { annotations } = metadata;
+        return annotations["client.knative.dev/user-image"] || null;
     }
 }
