@@ -54,7 +54,7 @@ export class CloudRun {
         } else if (!projectId && process.env.GCLOUD_PROJECT) {
             projectId = process.env.GCLOUD_PROJECT;
             core.info("Setting project Id from $GCLOUD_PROJECT");
-        } else {
+        } else if (!projectId && !JSONContent && !process.env.GCLOUD_PROJECT) {
             throw new Error('No project Id found. set "project_id" input.');
         }
 
