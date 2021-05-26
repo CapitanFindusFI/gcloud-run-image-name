@@ -7,11 +7,9 @@ async function run(): Promise<void> {
         const serviceName = core.getInput("name");
         const serviceRegion = core.getInput("region");
 
-        if (!serviceRegion) {
+        if (!serviceName) {
             throw new Error('Missing "name" input');
         }
-
-        console.log({ projectId, serviceName, serviceRegion });
 
         const cloudRunService = new CloudRun(serviceRegion, {
             projectId
