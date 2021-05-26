@@ -92,10 +92,10 @@ export class CloudRun {
         return getResponse.data;
     }
 
-    async getServiceImage(serviceName: string): Promise<string> {
+    async getServiceImage(serviceName: string): Promise<string | null | undefined> {
         const service = await this.getService(serviceName);
         console.log(service);
 
-        return 'dio boia';
+        return service.metadata?.name
     }
 }
