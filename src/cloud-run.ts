@@ -1,4 +1,4 @@
-import core from "@actions/core";
+import * as core from '@actions/core';
 import { Compute, GoogleAuth, JWT, UserRefreshClient } from "google-auth-library";
 import { google, run_v1 } from "googleapis";
 import { GaxiosResponse, MethodOptions } from "googleapis-common";
