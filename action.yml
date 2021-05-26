@@ -1,0 +1,19 @@
+name: "GCloud get service image name"
+description: "Retrieve a running Cloud Run service image name"
+inputs:
+  project_id:
+    description: "Google Cloud project id"
+    required: true
+  name:
+    description: "CloudRun service name"
+    required: true
+  region:
+    description: "CloudRun service region"
+    required: true
+outputs:
+  image:
+    description: "Name of CloudRun service image"
+runs:
+  using: "node12"
+  main: "dist/index.js"
+  

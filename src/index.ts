@@ -16,7 +16,7 @@ async function run(): Promise<void> {
         });
 
         const imageName = await cloudRunService.getServiceImage(serviceName);
-        core.setOutput("image_name", imageName);
+        core.setOutput("image", imageName);
     } catch (error) {
         core.error(error);
         core.setFailed(error.message)
